@@ -1,0 +1,14 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'node'
+    static_configs:
+      - targets: ['172.19.0.1:9100']
+
+# How to get this IP: get a shell script in the prometheus container
+# Execute "ip route"
+# You will get something like this:
+# /prometheus $ ip route
+# default via 172.19.0.1 dev eth0
+# 172.19.0.0/16 dev eth0 scope link  src 172.19.0.2
