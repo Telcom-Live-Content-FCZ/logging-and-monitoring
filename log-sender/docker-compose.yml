@@ -1,0 +1,23 @@
+services:
+  log-generator:
+    build:
+      context: log-generator
+    container_name: log-generator
+    networks:
+      - elk
+  fluent-bit:
+    image: fluent/fluent-bit:2.2
+    container_name: fluent-bit
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/log:/var/log:ro
+      - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+      - ./parsers.conf:/fluent-bit/etc/parsers.conf:ro
+    networks:
+      - elk
+    depends_on:
+      - log-generator
+
+networks:
+  elk:
+    external: true
