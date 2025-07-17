@@ -14,7 +14,7 @@ services:
       - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
       - ./parsers.conf:/fluent-bit/etc/parsers.conf:ro
     networks:
-      - elk
+      - elk #this can be deleted
     depends_on:
       - log-generator
 
