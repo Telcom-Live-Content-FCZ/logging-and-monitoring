@@ -4,7 +4,7 @@ global:
 scrape_configs:
   - job_name: 'node'
     static_configs:
-      - targets: ['172.19.0.1:9100']
+      - targets: ['192.168.128.1:9100']
 
 # How to get this IP: get a shell script in the prometheus container
 # Execute "ip route"
